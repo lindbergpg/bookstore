@@ -22,9 +22,8 @@ jobs:
 
     - name: Install poetry ${{ matrix.poetry-version }}
       run: |
-        python -m ensurepip
-        python -m pip install --upgrade pip
-        python -m pip install poetry==${{ matrix.poetry-version }}
+        curl -sSL https://install.python-poetry.org | python3 - --version ${{ matrix.poetry-version }}
+        echo "export PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
     
     - name: View poetry --help
       run: poetry --help
