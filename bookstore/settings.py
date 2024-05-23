@@ -26,8 +26,8 @@ SECRET_KEY = "django-insecure-p)_qru4ckx23*2q6!7_(402p2dv0j*f94#t$4c+!n_d-6z0^f0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 'https://ebac-book-store-api-ad4342a33183.herokuapp.com']
 
 # Application definition
 
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "bookstore.urls"
@@ -76,7 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "bookstore.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -134,9 +134,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
@@ -148,11 +145,10 @@ REST_FRAMEWORK = {
     ],
 }
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
-# SECRET_KEY = os.environ.get("SECRET_KEY")
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# DEBUG = int(os.environ.get("DEBUG", default=0))
-
-# 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
-# For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+STATIC_ROOT = BASE_DIR / 'staticfiles'
