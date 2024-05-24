@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-p)_qru4ckx23*2q6!7_(402p2dv0j*f94#t$4c+!n_d-6z0^f0
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1',
-                 'https://ebac-book-store-api-ad4342a33183.herokuapp.com']
+                 'ebac-book-store-api-ad4342a33183.herokuapp.com']
 
 # Application definition
 
